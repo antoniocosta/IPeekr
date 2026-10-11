@@ -10,6 +10,10 @@ A small Android home-screen widget that shows your connection at a glance:
 
 It was inspired by *IP Widget* (Dieter Thiess) but is written from scratch and is simpler. It is event-driven: no polling, and no foreground service unless you turn on instant updates.
 
+If you like this or find it useful, support the project by buying me a coffee.
+
+<a href="https://www.buymeacoffee.com/antoniocosta" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 140px !important;" ></a>
+
 <img src="docs/screenshot-1.png" width="270" alt="The app: widget preview and template"> <img src="docs/screenshot-2.png" width="270" alt="The widget on the home screen">
 
 IPeekr has a sibling app with the same look: [BLinkr](https://github.com/antoniocosta/BLinkr), a link router for social media.

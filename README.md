@@ -20,7 +20,7 @@ If you like this or find it useful, support the project by buying me a coffee.
 
 <a href="https://www.buymeacoffee.com/antoniocosta"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40"></a>
 
-IPeekr has two sibling apps with the same look: [Lurkr](https://github.com/antoniocosta/Lurkr), a logged-out, private viewer and link router for social media, and [Reedr](https://github.com/antoniocosta/Reedr), a read-it-later app.
+IPeekr has two sibling apps with the same look: [Lurkr](https://github.com/antoniocosta/Lurkr), a logged-out, private viewer and link router for social media, and [Reedr](https://github.com/antoniocosta/Reedr), a readability app that shows any article as a clean page, right away.
 
 - **Stack:** Kotlin, Jetpack Glance, Compose, WorkManager, DataStore.
 - **SDK levels:** minSdk 26, target 36.

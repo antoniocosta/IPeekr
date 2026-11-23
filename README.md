@@ -6,7 +6,7 @@
 
 <p align="center">WiFi details, IP addresses and location on your home screen, with no polling.</p>
 
-<p align="center"><img src="docs/phones.png" alt="IPeekr's settings screen with the widget preview and its template, the widget on the home screen (dark mode), and the text style options" width="900"></p>
+<p align="center"><img src="docs/phones.png" alt="IPeekr's settings screen with the widget preview and its template, the widget on the home screen (dark mode) and the text style options (dark mode)" width="900"></p>
 
 A small Android home-screen widget that shows your connection at a glance:
 - Connection type and WiFi details (SSID, security, link speed, channel, signal)

@@ -1,34 +1,38 @@
-<img src="art/ipeekr.svg" width="96" alt="IPeekr icon">
+<p align="center"><img src="art/ipeekr-round.svg" alt="" width="96"></p>
 
-# IPeekr
+<h1 align="center">IPeekr</h1>
+
+<h3 align="center">Your connection at a glance.</h3>
+
+<p align="center">WiFi details, IP addresses and location on your home screen, with no polling.</p>
+
+<p align="center"><img src="docs/phones.png" alt="IPeekr's settings screen with the widget preview and its template, the widget on the home screen (dark mode), and the text style options" width="900"></p>
 
 A small Android home-screen widget that shows your connection at a glance:
-- connection type and WiFi details (SSID, security, link speed, channel, signal)
-- mobile carrier and network type (4G/5G)
-- local IPv4/IPv6 addresses and VPN status
-- external IP with city/country and reverse hostname
+- Connection type and WiFi details (SSID, security, link speed, channel, signal)
+- Mobile carrier and network type (4G/5G)
+- Local IPv4/IPv6 addresses and VPN status
+- External IP with city/country and reverse hostname
 
-It was inspired by *IP Widget* (Dieter Thiess) but is written from scratch and is simpler. It is event-driven: no polling, and no foreground service unless you turn on instant updates.
+It was inspired by *IP Widget* (Dieter Thiess) but is written from scratch and is simpler. It is event-driven: No polling, and no foreground service unless you turn on instant updates.
 
 If you like this or find it useful, support the project by buying me a coffee.
 
-<a href="https://www.buymeacoffee.com/antoniocosta" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 40px !important;width: 140px !important;" ></a>
+<a href="https://www.buymeacoffee.com/antoniocosta"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" height="40"></a>
 
-<img src="docs/screenshot-1.png" width="270" alt="The app: widget preview and template"> <img src="docs/screenshot-2.png" width="270" alt="The widget on the home screen">
-
-IPeekr has a sibling app with the same look: [BLinkr](https://github.com/antoniocosta/BLinkr), a link router for social media.
+IPeekr has two sibling apps with the same look: [Lurkr](https://github.com/antoniocosta/Lurkr), a logged-out, private viewer and link router for social media, and [Reedr](https://github.com/antoniocosta/Reedr), a read-it-later app.
 
 - **Stack:** Kotlin, Jetpack Glance, Compose, WorkManager, DataStore.
 - **SDK levels:** minSdk 26, target 36.
-- **Theme:** black, white and blue (#0000EE; #8AB4F8 on #202124 in dark mode). Follows the system's light or dark mode, or pick Light or Dark at the bottom of the main screen.
+- **Theme:** Black, white and blue (#0000EE, or #8AB4F8 on #202124 in dark mode). Follows the system's light or dark mode, or pick Light or Dark at the bottom of the main screen.
 
 ## Features
 
 The widget text is a template you type in the app, made of `<tags>` such as `<name>`, `<speed>`, `<dbm>`, `<ip-internal>`, `<ip-external>`. There is one tag for every field IP Widget can show (type, name, standard, speed, channel, dBm, ASU, percent, frequency, channel width, encryption, BSSID, AP vendor/capabilities, IPv4/IPv6, netmask, CIDR, broadcast, gateway, DHCP + lease, DNS, interface, MAC/vendor, VPN, external IP, city/country/flag, hostname, battery, WiFi on/off), grouped in the app.
 - Fields that never apply at the same time share one tag: `<name>` is the SSID on WiFi and the operator on mobile, `<standard>` is "WiFi 6" or "5G", and `<speed>`, `<dbm>`, `<asu>`, `<percent>` follow the active connection.
-- Lines whose tags are all empty are hidden; long lines wrap.
+- Lines whose tags are all empty are hidden. Long lines wrap.
 
-Style: font (built-in families), size, bold, line spacing (a multiple of the size), and either system (Material You) colours or your own text and background colour with opacity. One widget, resizable to any size. The app is also the widget's settings screen (launcher long-press).
+Style: Font (built-in families), size, bold, line spacing (a multiple of the size), and either system (Material You) colours or your own text and background colour with opacity. One widget, resizable to any size. The app is also the widget's settings screen (launcher long-press).
 
 AP/device vendor names come from `app/src/main/assets/oui.tsv.gz`, built by `scripts/gen-oui.py` from Wireshark's `manuf` list.
 
@@ -39,7 +43,7 @@ Updates are event-driven, with a slow schedule as a backup ([`Triggers.kt`](app/
 | Trigger | When | Refresh |
 |---|---|---|
 | Connection type changes | A system job (`JobScheduler` with a required `NetworkRequest`) waits for a different kind of connection than the current one, e.g. WiFi → mobile. It runs even after the app process has been killed, and VPNs are handled. A network `PendingIntent` can't be used: Android drops it 5 s after each delivery. | normal |
-| Instant updates (opt-in switch) | A foreground service (`specialUse`) listens to every network change, including a switch between two WiFi networks, and refreshes on unlock. Android requires a notification while it runs; its channel is silent and can be hidden. | normal |
+| Instant updates (opt-in switch) | A foreground service (`specialUse`) listens to every network change, including a switch between two WiFi networks, and refreshes on unlock. Android requires a notification while it runs. Its channel is silent and can be hidden. | normal |
 | Tap the widget / open the app | right away | forced |
 | Periodic job | every 15 minutes (WorkManager's minimum) | normal |
 | Reboot / app update | re-registers the triggers, then refreshes once | normal |
@@ -51,7 +55,7 @@ Each refresh ([`Refresher.kt`](app/src/main/java/net/uncorp/ipeekr/refresh/Refre
 ## Limits
 
 - **Signal and speed** (dBm, %, Mbps) are not live. They are as of the last trigger, so at most about 15 minutes old.
-- **A lost network** shows up on the next periodic run or tap: the network trigger fires when a network comes up, not when one is lost.
+- **A lost network** shows up on the next periodic run or tap: The network trigger fires when a network comes up, not when one is lost.
 - **Release builds don't log** (R8 strips `Log.v/d/i/w`).
 
 ## Develop
@@ -67,4 +71,4 @@ scripts/dev.sh widget     # emulator home screen, to add the widget
 
 ## Icon
 
-The icon source is `art/ipeekr.svg` (512px pixel art). `scripts/gen-icon.py` regenerates the launcher drawables from it.
+The icon source is `art/ipeekr.svg` (512px pixel art). `scripts/gen-icon.py` regenerates the launcher drawables and the README's round logo (`art/ipeekr-round.svg`) from it. `scripts/phones.py docs/phones.png a.png b.png c.png` makes the README's phone picture from three full-screen screenshots.
